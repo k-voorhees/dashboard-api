@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const dashboard = require("./routes/dashboard"); // load the routes
 
 // loads environment variables from a .env file into process.env
 require("dotenv").config();
@@ -15,13 +16,12 @@ app.get("/", (req, res) => {
 });
 
 // <--- Routes --->
+app.use("/api/dashboard", dashboard);
 
-// declare our port variable and the default
 const port = process.env.PORT || 4000;
-// setup start function to await db connection
 const start = async () => {
   try {
-    // calls our mongoose function
+    // awaiting DB connection
     await CONNECT_DB(process.env.MONGO_URI);
     app.listen(port, console.log(`Running on PORT: ${port}`));
   } catch (error) {
