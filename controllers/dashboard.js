@@ -1,10 +1,5 @@
 const Recipe = require("../Models/RECIPE");
 const asyncWrapper = require("../Middleware/asyncWrapper");
-const req = require("express/lib/request");
-const { findOneAndDelete } = require("../Models/RECIPE");
-
-// notes
-// left off building logic for cleaning data in add recipe route.
 
 const getData = asyncWrapper(async (req, res) => {
   // grabs data on page load to fill table and sidebar
