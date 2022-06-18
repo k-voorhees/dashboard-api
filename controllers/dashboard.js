@@ -39,16 +39,21 @@ const getCategories = asyncWrapper(async (req, res) => {
 });
 
 const getRecipes = asyncWrapper(async (req, res) => {
-  const { category } = req.query;
+  const { category, featured } = req.query;
   // if there is a query for a specific category, return all recipes in that category
   // otherwise, return all recipes
   if (category) {
     const recipes = await Recipe.find({ Category: category });
     res.status(200).json({ recipes });
-  } else {
-    const recipes = await Recipe.find({});
+  }
+
+  if (featured) {
+    const recipes = await Recipe.find({ Featured: featured });
     res.status(200).json({ recipes });
   }
+
+  const recipes = await Recipe.find({});
+  res.status(200).json({ recipes });
 });
 
 module.exports = { getData, addRecipe, updateRecipe, deleteRecipe, getCategories, getRecipes };
