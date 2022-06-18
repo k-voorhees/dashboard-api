@@ -20,12 +20,15 @@ app.get("/", (req, res) => {
 // <--- Routes --->
 app.use("/api/dashboard", dashboard);
 
+const host = "0.0.0.0";
 const port = process.env.PORT || 4000;
 const start = async () => {
   try {
     // awaiting DB connection
     await CONNECT_DB(process.env.MONGO_URI);
-    app.listen(port, console.log(`Running on PORT: ${port}`));
+    app.listen(port, host, () => {
+      console.log(`Running on port: ${port}`);
+    });
   } catch (error) {
     console.log(error);
   }
