@@ -11,7 +11,7 @@ const CONNECT_DB = require("./DB/connect");
 // <--- Middleware --->
 app.use(cors());
 app.use(express.json());
-app.use(express.static("Front-End"));
+app.use(express.static("public"));
 
 // <--- Home Route --->
 app.get("/", (req, res) => {
