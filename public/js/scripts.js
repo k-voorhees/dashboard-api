@@ -26,7 +26,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
 // <-- POPULATE RECIPE TABLE -->
 window.addEventListener("DOMContentLoaded", (event) => {
-  fetch("http://localhost:4000/api/dashboard")
+  fetch("https://kvoorhees-dashboard-app.herokuapp.com/api/dashboard")
     .then((response) => {
       return response.json();
     })
@@ -53,7 +53,7 @@ modalButton.addEventListener("click", () => {
 
 // <-- POPULATE RECIPE FEATURED LIST -->
 window.addEventListener("DOMContentLoaded", (event) => {
-  fetch("http://localhost:4000/api/dashboard/recipes?featured=true")
+  fetch("https://kvoorhees-dashboard-app.herokuapp.com/api/dashboard/recipes?featured=true")
     .then((response) => {
       return response.json();
     })
